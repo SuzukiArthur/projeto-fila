@@ -10,8 +10,12 @@ import com.api.api.Task;
 import com.api.api.TaskService;
 
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
 import lombok.RequiredArgsConstructor;
+=======
+import java.util.*;
+>>>>>>> b79b341a9f3a3a73b51c2cde8b3452cf90fc3e5d
 
 @RestController
 @RequestMapping("/tasks")
@@ -32,7 +36,10 @@ public class TaskController {
         Task task = taskService.criarTarefa(queueName, payload);
         return ResponseEntity.ok(task);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b79b341a9f3a3a73b51c2cde8b3452cf90fc3e5d
     @GetMapping("/{id}")
     public ResponseEntity<Task> buscarTarefa(@PathVariable UUID id) {
         return taskService.buscarPorId(id)
