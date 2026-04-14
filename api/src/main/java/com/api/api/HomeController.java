@@ -1,0 +1,21 @@
+package com.api.api;
+
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+
+    @GetMapping("/")
+    public ResponseEntity<Map<String, String>> home() {
+        return ResponseEntity.ok(Map.of(
+                "status", "ok",
+                "message", "API de filas está rodando. Use /tasks para criar e consultar tarefas."
+        ));
+    }
+}
+

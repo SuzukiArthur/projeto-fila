@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: jdbc:postgresql://db:5432/filasdb
+    username: admin
+    password: senha123
+  jpa:
+    hibernate: 
+      ddl-auto: validate
+    show-sql: true

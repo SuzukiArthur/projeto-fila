@@ -1,11 +1,8 @@
-package com.filas.api.repository;
+package com.api.api;
 
-import com.filas.api.model.Task;
-import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.*;
-
-import java.util.Optional;
-import java.util.UUID;
+import jakarta.persistence.LockModeType;
+import java.util.*;
 
 public interface TaskRepository extends JpaRepository<Task, UUID> {
 
