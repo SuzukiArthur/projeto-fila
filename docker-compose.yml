@@ -1,20 +1,30 @@
 version: '3.8'
-
 services:
 
-  # ─── BANCO DE DADOS ───────────────────────────────────────
   db:
-    image: postgres:16          # usa a imagem oficial do PostgreSQL versão 16
+    image: postgres:16
     container_name: filas-db
     environment:
-      POSTGRES_DB: filasdb       # nome do banco que será criado
-      POSTGRES_USER: admin       # usuário do banco
-      POSTGRES_PASSWORD: senha123  # senha (pode mudar se quiser)
+      POSTGRES_DB: filasdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
     ports:
-      - "5432:5432"             # expõe a porta 5432 para você acessar do computador
+      - "5432:5432"
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql  # roda o script na primeira vez
-      - postgres_data:/var/lib/postgresql/data              # salva os dados mesmo se reiniciar
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: ./api
+    container_name: filas-api
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/filasdb
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: senha123
+    depends_on:
+      - db
 
 volumes:
-  postgres_data:    # volume nomeado para persistir os dados do banco
+  postgres_data:

@@ -1,3 +1,10 @@
 spring:
   application:
     name: api
+
+spring.datasource.url=jdbc:postgresql://db:5432/filasdb
+spring.datasource.username=admin
+spring.datasource.password=senha123
+
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
